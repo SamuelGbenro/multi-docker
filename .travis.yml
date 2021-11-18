@@ -11,14 +11,14 @@ script:
   - docker run -e CI=true stephengrider/react-test npm test
 
 after_success:
-  - docker build -t oyedelefavor/multi-client ./client
-  - docker build -t oyedelefavor/multi-nginx ./nginx
-  - docker build -t oyedelefavor/multi-server ./server
-  - docker build -t oyedelefavor/multi-worker ./worker
+  - docker build -t stephengrider/multi-client ./client
+  - docker build -t stephengrider/multi-nginx ./nginx
+  - docker build -t stephengrider/multi-server ./server
+  - docker build -t stephengrider/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push oyedelefavor/multi-client
-  - docker push oyedelefavor/multi-nginx
-  - docker push oyedelefavor/multi-server
-  - docker push oyedelefavor/multi-worker
+  - docker push stephengrider/multi-client
+  - docker push stephengrider/multi-nginx
+  - docker push stephengrider/multi-server
+  - docker push stephengrider/multi-worker
